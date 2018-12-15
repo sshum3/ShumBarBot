@@ -1,0 +1,27 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Mixing</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="{{url_for('static', filename='css/signin.css')}}" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <div class="container">
+            <h1>Making your {{nameOfCocktail}}, enjoy!!</h1>
+            <p><a class="btn btn-primary btn-lg" href="{{url_for('index', username=username)}}" role="button">&laquo; Back to order page</a></p>
+        </div> <!-- /container -->
+    </body>
+</html>

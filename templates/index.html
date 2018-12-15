@@ -1,0 +1,76 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{url_for('static', filename='favicon.ico')}}">
+    
+    <title>BarBot.Shum.cc</title>
+
+    <!-- Bootstrap core CSS -->
+    
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='css/jumbotron.css')}}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1>{{username}}, what would you like to drink?</h1>
+          <p><a class="btn btn-primary btn-lg" href="{{url_for('make', username=username)}}" role="button">Make your own cocktail &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+          <h2>Choose a cocktail...</h2>
+        {% for coc in cocktails %}
+<div class="card">
+  <div class="card-body">
+    <a name="{{coc['id']}}">
+      <h4 class="card-title">{{coc['name']}}</h4>
+    </a>
+    <h6 class="card-subtitle mb-2 text-muted">Created by {{coc['createdby']}} - {{coc['count']}} made</h6>
+      
+    <p class="card-text">Contains: 
+      {% for ing in coc['ingredients'] %}
+        {{ing}}{{ "," if not loop.last }}
+      {% endfor %}
+      <br />
+        Extra instructions: 
+      {{coc['instructions']}}
+      </p>
+    <a href="{{url_for('mix', id=coc['id'], username=username)}}" class="card-link btn btn-success" onclick="return confirm('Are you sure you want to make this?\n\nMAKE SURE THERE IS A CUP IN THE MACHINE!')">Make this drink</a> <small style="color:#CCC;">(#{{coc['id']}})</small>
+  </div>
+</div>
+<br />
+          
+ {% endfor %}  
+        
+        
+
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer class="container">
+        <p><a class="btn btn-primary btn-sm" href="{{url_for('login')}}" role="button">&laquo; Logout</a></p>
+      <p>&copy; Shum 2017</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  </body>
+</html>

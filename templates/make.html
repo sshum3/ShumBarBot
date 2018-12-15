@@ -1,0 +1,87 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{url_for('static', filename='favicon.ico')}}">
+    <title>BarBot.Shum.cc</title>
+
+    <!-- Bootstrap core CSS -->
+    
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='css/jumbotron.css')}}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1>Make your own cocktail</h1>
+          <p><a class="btn btn-primary btn-lg" href="{{url_for('index',username=username)}}" role="button">&laquo; Back to order page</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+        
+        
+        
+        
+<form method="post">
+    <h4>Name your cocktail</h4>
+  <div class="form-group">
+    <label for="cocktailname">Cocktail Name</label>
+    <input type="text" name="cocktailname" class="form-control" id="cocktailname" placeholder="Name" required />
+  </div>
+  <br><br>
+    <h4>Select your alcohol <small>(There is a maximum!)</small></h4>
+    
+  {% for ing in ingredients %}
+  
+  <div class="form-group">
+    <label for="{{ing}}">{{ing}}</label>
+    <select class="form-control" id="{{ing}}" name="{{ing}}">
+      <option value="0">None</option>
+      <option value="1">Single Shot</option>
+      <option value="2">Double Shot</option>
+    </select>
+  </div>
+ {% endfor %}  
+<br><br>
+<h4>Mixers</h4>
+
+  <div class="form-group">
+    <label for="instructions">Extra instructions (for example, what mixer to add)</label>
+    <textarea class="form-control" id="instructions" rows="3" name="instructions"></textarea>
+  </div>
+    <p>Once you have added your cocktail, it will be added to the menu. You can then order it from the order page.</p>
+  <button type="submit" class="btn btn-primary"  onclick="return confirm('Are you sure you have finished your cocktail')">Add Cocktail</button>
+</form>
+        
+        
+        
+        
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer class="container">
+      
+        <p>&copy; Shum 2017</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  </body>
+</html>
